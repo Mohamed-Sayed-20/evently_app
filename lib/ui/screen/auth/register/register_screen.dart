@@ -10,6 +10,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class RegisterScreen extends StatelessWidget {
+  var nameController = TextEditingController();
   var emailController = TextEditingController();
   var passwordController = TextEditingController();
   var rePasswordController = TextEditingController();
@@ -52,7 +53,7 @@ class RegisterScreen extends StatelessWidget {
                       color: AppColors.lightGreyColor,
                       size: 25,
                     ),
-                    controller: emailController,
+                    controller: nameController,
                     validator: (text) {
                       //todo: validation
                     },
