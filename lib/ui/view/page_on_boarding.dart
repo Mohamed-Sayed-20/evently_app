@@ -45,7 +45,7 @@ class _PageOnBoardingState extends State<PageOnBoarding> {
               ),
             ),
           ),
-          SizedBox(height: 60),
+          SizedBox(height: height * 0.03),
           Expanded(
             child: IntroductionScreen(
               showNextButton: false,
@@ -54,7 +54,8 @@ class _PageOnBoardingState extends State<PageOnBoarding> {
               key: intKey,
               onChange: (index) {
                 countPage = index;
-                setState(() {});
+                setState(() {}
+                );
               },
               back: Icon(
                 Icons.arrow_back_ios_new_outlined,
@@ -80,7 +81,9 @@ class _PageOnBoardingState extends State<PageOnBoarding> {
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 30),
+                        padding: EdgeInsets.symmetric(
+                            horizontal: width * 0.04
+                        ),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
@@ -121,9 +124,11 @@ class _PageOnBoardingState extends State<PageOnBoarding> {
                           ],
                         ),
                       ),
-                      SizedBox(height: 10),
+                      //SizedBox(height: height*0.01),
                       Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 30),
+                        padding: EdgeInsets.symmetric(
+                            horizontal: width * 0.04
+                        ),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
@@ -221,17 +226,23 @@ class _PageOnBoardingState extends State<PageOnBoarding> {
                   countPage == 3
                       ? AppLocalizations.of(context)!.done
                       : AppLocalizations.of(context)!.next,
-                  style: Theme.of(context).textTheme.headlineLarge,
+                    style: themeProvider.isDarkMode() ? AppStyles
+                        .medium20WhiteDarkColor
+                        : AppStyles.medium20WhiteDarkColor
                 ),
               ),
             ),
           ),
+          SizedBox(height: height * 0.01,)
         ],
       ),
     );
   }
 
+
   PageDecoration getPageDecoration() {
+    var width = context.width;
+    var height = context.height;
     var themeProvider = Provider.of<AppThemeProvider>(context);
     return PageDecoration(
       titleTextStyle: AppStyles.medium20BlackColor.copyWith(
@@ -244,12 +255,11 @@ class _PageOnBoardingState extends State<PageOnBoarding> {
             ? AppColors.lightGreyColor
             : AppColors.greyColor,
       ),
-      imagePadding: EdgeInsets.symmetric(vertical: 10),
-      titlePadding: EdgeInsets.symmetric(vertical: 26),
-      bodyPadding: EdgeInsets.symmetric(vertical: 20),
+      imagePadding: EdgeInsets.symmetric(horizontal: width * 0.02),
+      titlePadding: EdgeInsets.symmetric(vertical: height * 0.01),
+      bodyPadding: EdgeInsets.symmetric(horizontal: width * 0.01),
     );
   }
-
   DotsDecorator getDotDecoration() {
     var themeProvider = Provider.of<AppThemeProvider>(context);
     return DotsDecorator(
